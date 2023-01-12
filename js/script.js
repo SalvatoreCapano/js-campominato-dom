@@ -1,3 +1,30 @@
+/*
+
+-Generare 16 numeri casuali diversi tra loro:
+    -Range 1-100
+    -Range 1-81
+    -Range 1-49
+-Al click sulla cella Controllare uguaglianza numero cliccato e elementi array bomba
+    -Se Uguali: 
+        -applicare alla cella colore sconfitta
+        -partita terminata
+        -stampare punteggio
+        -rendere le celle non cliccabili
+    -Se Non uguali:
+        -applicare alla cella colore vittoria
+        -aumentare punteggio
+        -controllare punteggio:
+            -se punteggio >= (numero celle - numero bombe)
+                -partita terminata
+                -stampare punteggio
+                -rendere le celle non cliccabili
+
+*/
+
+
+
+
+
 // Bonus
 const playBtn = document.querySelector("#playBtn");
 const grid = document.querySelector(".grid");
