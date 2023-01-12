@@ -12,15 +12,47 @@ function setCellSize (number) {
     }
 };
 
-// Crea un elemento cella
+// Crea un elemento cella e applica l'event Listener
 function createCell (index) {
 
     const newElement = document.createElement("div");
     newElement.classList.add("cell");
-    newElement.innerHTML = index + 1;
+    newElement.innerText = index + 1;
+
+    // Listener Evento click sulla cella 
+    newElement.addEventListener("click", function(){
+        console.log("----------");
+        console.log("Hai cliccato la cella", this.innerText);
+
+        // Caso partita persa
+        if (checkGameOver(bombsPositions, this.innerText)) {
+            this.classList.add("bomb");
+            console.log("BOMBA");
+        } 
+        // Caso partita non persa
+        else {
+            if (!(this.classList.contains("active"))) {
+                score++;
+            }
+        }
+        this.classList.add("active");
+        console.log("Punteggio:", score);
+    });
 
     return newElement;
 };
+
+// Controlla se l'elemento cliccato e' una bomba
+function checkGameOver (array, currentIndex) {
+
+    // Controlla se la cella corrisponde ad una bomba
+    if (array.includes(parseInt(currentIndex))) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 // Riempie la griglia con gli elementi cella creati
 function fillGrid () {
@@ -30,12 +62,6 @@ function fillGrid () {
         // Creazione e aggiunta nuovo elemento cell
         newCell = createCell (i);
         grid.append(newCell);
-
-        // Listener Evento click sulla cella 
-        newCell.addEventListener("click", function(){
-            console.log("Hai cliccato la cella", this.innerHTML);
-            this.classList.add("active");
-        });
     };
 };
 

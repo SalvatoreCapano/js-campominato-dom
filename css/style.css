@@ -94,6 +94,10 @@ main {
     background-color: lightblue;
 }
 
+.cell.bomb.active {
+    background-color:indianred;
+}
+
 .grid.show {
     opacity: 1;
 }

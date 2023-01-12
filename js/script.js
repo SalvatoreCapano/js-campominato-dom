@@ -23,11 +23,13 @@
 
 const playBtn = document.querySelector("#playBtn");
 const grid = document.querySelector(".grid");
+
 const difficulty = document.querySelector("#difficulty");
 const root = document.querySelector(":root");
 
 let cellsNumber;
 let bombsPositions;
+let score = 0;
 
 // Nuova partita
 playBtn.addEventListener("click", function(){
@@ -38,6 +40,9 @@ playBtn.addEventListener("click", function(){
     // Svuota la console
     console.clear();
 
+    // Resetta punteggio
+    score = 0;
+
     // Se non presente, mostra la griglia
     if (!grid.classList.contains("show")) {
         grid.classList.add("show");
@@ -47,14 +52,10 @@ playBtn.addEventListener("click", function(){
     cellsNumber = difficulty.value;
     setCellSize(cellsNumber);
 
-    // Riempie la griglia
-    fillGrid ();
-
     // Generazione posizioni bombe
     bombsPositions = setBombsPositions(cellsNumber).sort((a,b)=>a-b);
     console.log("Bombe generate alle posizioni:", bombsPositions);
 
-
-
-
+    // Riempie la griglia
+    fillGrid ();
 });
