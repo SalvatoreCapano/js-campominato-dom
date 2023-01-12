@@ -27,6 +27,7 @@ const difficulty = document.querySelector("#difficulty");
 const root = document.querySelector(":root");
 
 let cellsNumber;
+let bombsPositions;
 
 // Nuova partita
 playBtn.addEventListener("click", function(){
@@ -48,4 +49,12 @@ playBtn.addEventListener("click", function(){
 
     // Riempie la griglia
     fillGrid ();
+
+    // Generazione posizioni bombe
+    bombsPositions = setBombsPositions(cellsNumber).sort((a,b)=>a-b);
+    console.log("Bombe generate alle posizioni:", bombsPositions);
+
+
+
+
 });
