@@ -28,11 +28,18 @@ function createCell (index) {
         if (checkGameOver(bombsPositions, this.innerText)) {
             this.classList.add("bomb");
             console.log("BOMBA");
+            grid.classList.add("overlay");
+            root.style.setProperty("--overlayMessage", `'game over'`);
         } 
         // Caso partita non persa
         else {
             if (!(this.classList.contains("active"))) {
                 score++;
+                scoreContainer.innerText = `Il tuo punteggio è ${score}`;
+                if (score >= maxScore) {
+                    grid.classList.add("overlay");
+                    root.style.setProperty("--overlayMessage", `'hai vinto'`);
+                }
             }
         }
         this.classList.add("active");
