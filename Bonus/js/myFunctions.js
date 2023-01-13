@@ -53,8 +53,9 @@ function showBombs (bombsPositions) {
     let allCells = document.querySelectorAll(".cell");
 
     for (let i = 0; i < 16; i++) {
-        allCells[bombsPositions[i]].classList.add("bomb");
-        allCells[bombsPositions[i]].classList.add("active");
+        let index = bombsPositions [i] - 1;
+        allCells[index].classList.add("bomb");
+        allCells[index].classList.add("active");
         console.log("Sto mostrando le bombe...");;
     }
 }
